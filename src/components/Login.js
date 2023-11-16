@@ -22,7 +22,7 @@ const Login = (props) => {
       navigate("/");
     }
     else{
-      props.showAlert("Invalid Details","danger");
+      props.showAlert(json.error,"danger");
     }
   }
 

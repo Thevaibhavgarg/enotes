@@ -27,9 +27,20 @@ const Notes = (props) => {
     }
 
     const handleclick = (e)=>{
-        editNote(note.id,note.etitle,note.edescription,note.etag)
-        refClose.current.click();
-        props.showAlert("Note Updated Successfully!!","success");
+        e.preventDefault();
+        if(note.etitle.length <3){
+            // props.showAlert("Title should be atleast 3 character long ","danger");
+            alert("Title should be atleast 3 character long ");
+        }
+        else if(note.edescription.length <5){
+            // props.showAlert("Description should be atleast 5 character long ","danger");
+            alert("Description should be atleast 5 character long ");
+        }
+        else{
+            editNote(note.id,note.etitle,note.edescription,note.etag)
+            refClose.current.click();
+            props.showAlert("Note Updated Successfully!!","success");
+        }
     }
     const onChange = (e)=>{
         setNote({...note,[e.target.name]:e.target.value})
@@ -53,11 +64,11 @@ const Notes = (props) => {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required/>
+                                    <input type="text" className="form-control" placeholder="Title should be atleast 3 character long" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Description</label>
-                                    <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required/>
+                                    <textarea type="text" className="form-control" placeholder="Description should be atleast 5 character long" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label">Tag</label>
@@ -67,7 +78,7 @@ const Notes = (props) => {
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button disabled={note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
+                            <button  type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
                         </div>
                     </div>
                 </div>
@@ -78,8 +89,8 @@ const Notes = (props) => {
                 <div className="container mx-2">
                 {notes.length===0 && 'NO!! Notes to Display'}
                 </div>
-                {notes.map((note) => {
-                    return <Noteitem showAlert={props.showAlert} key={note._id} updateNote={updateNote} note={note} />;
+                {notes.map((note,index) => {
+                    return <Noteitem showAlert={props.showAlert} key={index} updateNote={updateNote} note={note} />;
                 })}
             </div>
         </>

@@ -1,11 +1,27 @@
-import React , {useContext} from 'react'
+import React, { useContext, useEffect } from 'react'
 import noteContext from '../context/notes/notesContact'
+import {useNavigate} from 'react-router-dom';
 
 const About = () => {
-  const a = useContext(noteContext);
+  const context = useContext(noteContext);
+  const { getDetails , details } = context;
+  let navigate = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      getDetails();
+    }
+    else{
+        navigate("/login");
+    }
+    // eslint-disable-next-line
+}, [])
   return (
-    <div>
-      This is About {a.name}
+    <div className='container'>
+      <ul className="list-group">
+        <li className="list-group-item"><b>Nmae: </b>{details.name}</li>
+        <li className="list-group-item"><b>Email: </b>{details.email}</li>
+        <li className="list-group-item"><b>Account Created Date: </b>{new Date(details.date).toGMTString()}</li>
+      </ul>
     </div>
   )
 }
