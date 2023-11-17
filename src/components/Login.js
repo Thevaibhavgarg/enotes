@@ -22,7 +22,7 @@ const Login = (props) => {
       navigate("/");
     }
     else{
-      props.showAlert(json.error,"danger");
+      props.showAlert("Invalid Details","danger");
     }
   }
 
@@ -41,7 +41,7 @@ const Login = (props) => {
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" value={credentials.password} onChange={onChange} id="password" name="password" />
+          <input type="password" className="form-control" value={credentials.password} onChange={onChange} id="password" name="password" required />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
