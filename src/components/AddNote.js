@@ -21,6 +21,7 @@ const AddNote = (props) => {
         setNote({...note,[e.target.name]:e.target.value})
     }
     return (
+        <>
         <div className='mt-2'>
             <h2 className='my-2'>Add New Note</h2>
             <form onSubmit={handleclick}>
@@ -39,6 +40,8 @@ const AddNote = (props) => {
                 <button  type="submit" className="btn btn-primary">Add Note</button>
             </form>
         </div>
+        </>
+        
     )
 }
 
