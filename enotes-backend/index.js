@@ -9,6 +9,9 @@ const app = express()
 const port = process.env.PORT || 8000
 
 app.use(cors())
+app.use(cors({
+  origin: 'https://enotes-sigma.vercel.app'
+}));
 app.use(express.json());
 
 //Available Routes
