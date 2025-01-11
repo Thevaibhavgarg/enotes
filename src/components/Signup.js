@@ -10,7 +10,7 @@ const Signup = (props) => {
     if (password !== cpassword) {
       props.showAlert("Password Does Not Matched with Confirm Password", "danger");
     } else {
-      const response = await fetch("https://enotes-backend.vercel.app/api/auth/createuser", {
+      const response = await fetch("/api/auth/createuser", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
