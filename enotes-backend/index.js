@@ -15,7 +15,7 @@ const corsConfig = {
 }
 app.options("*",cors(corsConfig));
 app.use(cors(corsConfig));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 //Available Routes
