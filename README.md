@@ -1,3 +1,6 @@
+#Video of Working of Enote
+[Video](https://www.linkedin.com/posts/vaibhav-garg-_webdevelopment-mernstack-projectshowcase-activity-7131348459567149057-pJpk?utm_source=share&utm_medium=member_desktop)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
