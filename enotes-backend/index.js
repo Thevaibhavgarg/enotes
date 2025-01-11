@@ -8,11 +8,14 @@ connectToMongo();
 const app = express()
 const port = process.env.PORT || 8000
 
-app.use(cors())
-app.use(cors({
+const corsConfig = {
   origin: 'https://enotes-sigma.vercel.app',
-  methods: ['GET','POST','DELETE','PUT']
-}));
+  methods: ["GET","POST","DELETE","PUT"],
+  credentials: true
+}
+app.options("*",cors(corsConfig));
+app.use(cors(corsConfig));
+app.use(cors());
 app.use(express.json());
 
 //Available Routes
