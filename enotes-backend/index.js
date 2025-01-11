@@ -13,8 +13,8 @@ const corsConfig = {
   methods: ["GET","POST","DELETE","PUT"],
   credentials: true
 }
-app.options("*",cors(corsConfig));
 app.use(cors(corsConfig));
+app.options("*",cors(corsConfig));
 // app.use(cors());
 app.use(express.json());
 
