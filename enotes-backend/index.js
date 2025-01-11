@@ -15,26 +15,26 @@ const port = process.env.PORT || 8000
 //   credentials: true // If you need to send cookies or authentication credentials
 // }));
 
-const corsConfig = {
-  origin: '*',
-  methods: ["GET","POST","DELETE","PUT"],
-  credentials: true
-}
-app.use(cors(corsConfig));
-app.options("*",cors(corsConfig));
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   if (req.method === "OPTIONS") {
-//     return res.sendStatus(200);
-//   }
-//   next();
-// });
-app.use(cors());
+// const corsConfig = {
+//   origin: '*',
+//   methods: ["GET","POST","DELETE","PUT"],
+//   credentials: true
+// }
+// app.use(cors(corsConfig));
+// app.options("*",cors(corsConfig));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+// app.use(cors());
 app.use(express.json());
 
 //Available Routes
