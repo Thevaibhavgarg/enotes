@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import {useNavigate} from 'react-router-dom' 
+import {useNavigate} from 'react-router-dom'
+
+const host = process.env.REACT_APP_BACKEND_URI 
 
 const Login = (props) => {
   const [credentials,setCredentials] = useState({email:"",password:""})
@@ -7,7 +9,7 @@ const Login = (props) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const response = await fetch("https://enotes-backend.vercel.app/api/auth/login",{
+    const response = await fetch(`${host}/api/auth/login`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+const host = process.env.REACT_APP_BACKEND_URI
+
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
   let navigate = useNavigate();
@@ -10,7 +12,7 @@ const Signup = (props) => {
     if (password !== cpassword) {
       props.showAlert("Password Does Not Matched with Confirm Password", "danger");
     } else {
-      const response = await fetch("https://enotes-backend.vercel.app/api/auth/createuser", {
+      const response = await fetch(`${host}/api/auth/createuser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

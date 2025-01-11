@@ -9,9 +9,9 @@ const app = express()
 const port = process.env.PORT || 8000
 
 app.use(cors({
-  origin: 'https://enotes-sigma.vercel.app', // Allow only this origin
+  origin: process.env.FRONTEND_URI, // Allow only this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  allowedHeaders: ['Content-Type', 'Authorization','auth-token'], // Specify allowed headers
   credentials: true // If you need to send cookies or authentication credentials
 }));
 
@@ -34,7 +34,7 @@ app.use(cors({
 //   }
 //   next();
 // });
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 //Available Routes

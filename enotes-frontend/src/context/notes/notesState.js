@@ -2,14 +2,14 @@ import NoteContext from "./notesContact";
 import { useState } from "react";
 
 const NoteState = (props) => {
-    const host = "https://enotes-backend.vercel.app"
+    const host = process.env.REACT_APP_BACKEND_URI
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
     const [details, setDetails] = useState(notesInitial)
 
     //Get User Details
     const getDetails = async () => {
-        const response = await fetch("https://enotes-backend.vercel.app/api/auth//getuser", {
+        const response = await fetch(`${host}/api/auth/getuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
