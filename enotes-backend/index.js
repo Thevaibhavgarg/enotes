@@ -23,12 +23,12 @@ const port = process.env.PORT || 8000
 // app.use(cors(corsConfig));
 // app.options("*",cors(corsConfig));
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_URI);
   res.setHeader(
     "Access-Control-Allow-Methods",
     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization","auth-token");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, auth-token");
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
   }
