@@ -10,7 +10,8 @@ const port = process.env.PORT || 8000
 
 app.use(cors())
 app.use(cors({
-  origin: 'https://enotes-sigma.vercel.app'
+  origin: 'https://enotes-sigma.vercel.app',
+  methods: ['GET','POST','DELETE','PUT']
 }));
 app.use(express.json());
 
