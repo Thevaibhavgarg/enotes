@@ -23,7 +23,7 @@ const port = process.env.PORT || 8000
 // app.use(cors(corsConfig));
 // app.options("*",cors(corsConfig));
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_URI);
+  res.setHeader("Access-Control-Allow-Origin", `${process.env.FRONTEND_URI}`);
   res.setHeader(
     "Access-Control-Allow-Methods",
     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
