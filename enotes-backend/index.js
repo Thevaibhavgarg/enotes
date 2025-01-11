@@ -8,20 +8,20 @@ connectToMongo();
 const app = express()
 const port = process.env.PORT || 8000
 
-app.use(cors({
-  origin: process.env.FRONTEND_URI, // Allow only this origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization','auth-token'], // Specify allowed headers
-  credentials: true // If you need to send cookies or authentication credentials
-}));
+// app.use(cors({
+//   origin: process.env.FRONTEND_URI, // Allow only this origin
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+//   allowedHeaders: ['Content-Type', 'Authorization','auth-token'], // Specify allowed headers
+//   credentials: true // If you need to send cookies or authentication credentials
+// }));
 
-// const corsConfig = {
-//   origin: 'https://enotes-sigma.vercel.app',
-//   methods: ["GET","POST","DELETE","PUT"],
-//   credentials: true
-// }
-// app.use(cors(corsConfig));
-// app.options("*",cors(corsConfig));
+const corsConfig = {
+  origin: '*',
+  methods: ["GET","POST","DELETE","PUT"],
+  credentials: true
+}
+app.use(cors(corsConfig));
+app.options("*",cors(corsConfig));
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader(
