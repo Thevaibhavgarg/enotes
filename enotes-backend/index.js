@@ -15,6 +15,18 @@ const corsConfig = {
 }
 app.use(cors(corsConfig));
 app.options("*",cors(corsConfig));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://enotes-sigma.vercel.app");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 // app.use(cors());
 app.use(express.json());
 
